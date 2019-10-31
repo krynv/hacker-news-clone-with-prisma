@@ -6,7 +6,7 @@ function votes(parent, args, context) {
     return context.prisma.link({ id: parent.id }).votes();
 }
 
-module.exports = {
+export default {
     postedBy,
     votes,
 };

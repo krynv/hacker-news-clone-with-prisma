@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import { verify } from 'jsonwebtoken';
 
 const APP_SECRET = '1337c0d3';
 
@@ -8,7 +8,7 @@ function getUserId(context) {
     if (Authorization) {
 
         const token = Authorization.replace('Bearer ', '');
-        const { userId } = jwt.verify(token, APP_SECRET);
+        const { userId } = verify(token, APP_SECRET);
 
         return userId;
     }
@@ -16,7 +16,7 @@ function getUserId(context) {
     throw new Error('Not authenticated');
 }
 
-module.exports = {
+export {
     APP_SECRET,
     getUserId,
 };
